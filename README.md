@@ -17,3 +17,5 @@ Run:
 npm run dev
 
 Then open the local URL shown in the terminal.
+
+Created as part of the Code the Dream React course.

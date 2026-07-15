@@ -1,21 +1,21 @@
-# Todo List
+# My Todos
 
-A simple React todo list application created for Code the Dream.
+A simple React Todo List application built with Vite for Code the Dream program.
 
 ## Installation
 
-1. Clone the repository.
-2. Open the project folder in the terminal.
-3. Run:
+Clone the repository and install the dependencies:
 
-   npm install
+```bash
+npm install
+```
 
 ## Run the Development Server
 
-Run:
+Start the Vite development server:
 
+```bash
 npm run dev
+```
 
-Then open the local URL shown in the terminal.
-
-Created as part of the Code the Dream React course.
+Then open the local URL shown in the terminal (usually http://localhost:5173).

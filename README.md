@@ -1,19 +1,27 @@
-# Todo List
+# My Todos
 
-A simple React todo list application created for Code the Dream.
+## Description
+
+My Todos is a simple React Todo List application created for Code the Dream. It displays a list of three todo items using React and Vite.
 
 ## Installation
 
-1. Clone the repository.
-2. Open the project folder in the terminal.
-3. Run:
+Clone the repository, open the project folder in the terminal, and install the dependencies:
 
-   npm install
+```bash
+npm install
+```
 
 ## Run the Development Server
 
-Run:
+Start the Vite development server:
 
+```bash
 npm run dev
+```
 
-Then open the local URL shown in the terminal.
+Open the local URL displayed in the terminal, usually:
+
+```text
+http://localhost:5173/
+```

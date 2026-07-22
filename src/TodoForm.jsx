@@ -1,8 +1,11 @@
 function TodoForm() {
   return (
     <form>
-      <input placeholder="Enter a Todo" />
-      <button>Add</button>
+      <label htmlFor="todoTitle">Todo title</label>
+      <input id="todoTitle" type="text" />
+      <button type="submit" disabled>
+        Add Todo
+      </button>
     </form>
   );
 }

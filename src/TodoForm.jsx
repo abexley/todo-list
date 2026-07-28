@@ -9,7 +9,7 @@ function TodoForm({ onAddTodo }) {
     const todoTitle = event.target.todoTitle.value.trim();
     if (todoTitle) {
       onAddTodo(todoTitle);
-      event.target.reset(); // Clear the input field after adding the todo
+      event.target.reset();
       inputRef.current.focus();
     }
   };

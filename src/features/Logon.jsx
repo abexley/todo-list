@@ -9,6 +9,7 @@ function Logon({ onSetEmail, onSetToken }) {
   async function handleSubmit(event) {
     event.preventDefault();
     setIsLoggingOn(true);
+    setAuthError("");
 
     try {
       const response = await fetch("/api/users/logon", {

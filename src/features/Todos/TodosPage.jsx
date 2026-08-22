@@ -10,6 +10,7 @@ function TodosPage({ token }) {
 useEffect(() => {
   async function fetchTodos() {
     setIsTodoListLoading(true);
+    setError("");
 
     try {
       const params = new URLSearchParams({
@@ -55,6 +56,7 @@ async function addTodo(todoTitle) {
 
   // Optimistic update
   setTodoList((previous) => [newTodo, ...previous]);
+setError("");
 
   try {
     const response = await fetch("/api/tasks", {
@@ -70,9 +72,13 @@ async function addTodo(todoTitle) {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Unable to add todo");
-    }
+    if (response.status === 401) {
+  throw new Error("Unauthorized");
+}
+
+if (!response.ok) {
+  throw new Error("Unable to add todo");
+}
 
     const data = await response.json();
 
@@ -106,6 +112,7 @@ async function completeTodo(id) {
 
   // Optimistic update
   setTodoList(updatedTodoList);
+  setError("");
 
   try {
     const response = await fetch(`/api/tasks/${id}`, {
@@ -120,9 +127,14 @@ async function completeTodo(id) {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Unable to complete todo");
-    }
+    if (response.status === 401) {
+  throw new Error("Unauthorized");
+}
+
+if (!response.ok) {
+  throw new Error("Unable to complete todo");
+}
+
   } catch (error) {
     setTodoList((previous) =>
       previous.map((todo) =>
@@ -145,6 +157,8 @@ async function updateTodo(editedTodo) {
       todo.id === editedTodo.id ? editedTodo : todo
     )
   );
+  setError("");
+
 
   try {
     const response = await fetch(`/api/tasks/${editedTodo.id}`, {
@@ -160,9 +174,13 @@ async function updateTodo(editedTodo) {
       }),
     });
 
-    if (!response.ok) {
-      throw new Error("Unable to update todo");
-    }
+    if (response.status === 401) {
+  throw new Error("Unauthorized");
+}
+
+if (!response.ok) {
+  throw new Error("Unable to update todo");
+}
   } catch (error) {
     setTodoList((previous) =>
       previous.map((todo) =>

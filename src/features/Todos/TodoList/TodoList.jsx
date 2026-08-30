@@ -1,16 +1,20 @@
 import TodoListItem from "./TodoListItem";
+import { useMemo } from "react";
 
+function TodoList({ todoList, onCompleteTodo, onUpdateTodo, dataVersion }) {
+   const filteredTodoList = useMemo(() => {
 
-function TodoList({ todoList, onCompleteTodo, onUpdateTodo }) {
-    const filteredTodoList = todoList.filter (
-    (todo) => todo.isCompleted !== true 
-    );
+  return {
+    version: dataVersion,
+    todos: todoList.filter((todo) => todo.isCompleted !== true),
+  };
+}, [todoList, dataVersion]);
 
-  return filteredTodoList.length === 0 ? (
+  return filteredTodoList.todos.length === 0 ? (
     <p>Add todo above to get started</p>
   ) : (
     <ul>
-      {filteredTodoList.map((todo) => (
+      {filteredTodoList.todos.map((todo) => (
         <TodoListItem 
         key={todo.id} 
         todo={todo}

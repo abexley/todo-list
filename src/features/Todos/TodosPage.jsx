@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useReducer } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList/TodoList";
 import SortBy from "../../shared/SortBy";
@@ -10,7 +11,9 @@ import {
   TODO_ACTIONS,
 } from "../../reducers/todoReducer";
 
-function TodosPage({ token }) {
+function TodosPage() {
+  const { token } = useAuth();
+
   const [state, dispatch] = useReducer(todoReducer, initialTodoState);
 
   const {

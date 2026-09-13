@@ -14,7 +14,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [token, setToken] = useState("");
 
   const login = async (userEmail, password) => {
@@ -35,7 +35,7 @@ export function AuthProvider({ children }) {
       const data = await response.json();
 
       if (response.status === 200 && data.name && data.csrfToken) {
-        setEmail(data.name);
+        setUserName(data.name);
         setToken(data.csrfToken);
 
         return {
@@ -67,14 +67,14 @@ export function AuthProvider({ children }) {
         });
       }
 
-      setEmail("");
+      setUserName("");
       setToken("");
 
       return {
         success: true,
       };
     } catch {
-      setEmail("");
+      setUserName("");
       setToken("");
 
       return {
@@ -85,7 +85,7 @@ export function AuthProvider({ children }) {
   };
 
   const value = {
-    email,
+    userName,
     token,
     isAuthenticated: !!token,
     login,

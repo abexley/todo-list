@@ -16,13 +16,15 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
   };
 
   const handleUpdate = (event) => {
-    if (!isEditing) return;
-
     event.preventDefault();
+
+    if (!isEditing || !isValidTodoTitle(workingTitle)) {
+      return;
+    }
 
     onUpdateTodo({
       ...todo,
-      title: workingTitle,
+      title: workingTitle.trim(),
     });
 
     setIsEditing(false);
@@ -38,6 +40,7 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
               labelText="Todo"
               value={workingTitle}
               onChange={handleEdit}
+              maxLength={100}
             />
 
             <button type="button" onClick={handleCancel}>
@@ -45,8 +48,7 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
             </button>
 
             <button
-              type="button"
-              onClick={handleUpdate}
+              type="submit"
               disabled={!isValidTodoTitle(workingTitle)}
             >
               Update
@@ -62,7 +64,13 @@ function TodoListItem({ todo, onCompleteTodo, onUpdateTodo }) {
               />
             </label>
 
-            <span onClick={() => setIsEditing(true)}>{todo.title}</span>
+            <button
+              type="button"
+              className="todo-title-button"
+              onClick={() => setIsEditing(true)}
+            >
+              {todo.title}
+            </button>
           </>
         )}
       </form>

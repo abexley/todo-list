@@ -4,7 +4,11 @@
 
 My Todos is a React Todo List application created as part of the Code the Dream React course. The application allows users to manage their tasks through an authenticated and interactive interface.
 
-Users can create, edit, complete, search, filter, and sort their todos. The application also includes protected routes, error and loading states, input validation, and a responsive interface.
+Users can create, edit, delete, complete, search, filter, and sort their todos. The application also includes protected routes, error and loading states, input validation, and a responsive interface.
+
+## Live Demo
+
+[View the live application](https://todo-list-liard-three-16.vercel.app/)
 
 ## Features
 
@@ -12,7 +16,8 @@ Users can create, edit, complete, search, filter, and sort their todos. The appl
 - Protected Todo and Profile pages
 - Add new todos
 - Edit existing todos
-- Mark todos as completed
+- Delete todos
+- Mark todos as completed or active
 - Search todos
 - Filter todos by All, Active, or Completed
 - Sort todos
@@ -30,6 +35,7 @@ Users can create, edit, complete, search, filter, and sort their todos. The appl
 - CSS
 - REST API
 - Git and GitHub
+- Vercel
 
 ## Screenshots
 
@@ -43,14 +49,14 @@ Users can create, edit, complete, search, filter, and sort their todos. The appl
 
 ## Getting Started
 
-Clone the repository and navigate to the project folder:
+Clone the repository:
 
 ```bash
-git clone YOUR-REPOSITORY-URL
+git clone https://github.com/abexley/todo-list.git
 cd todo-list
 ```
 
-Install the dependencies:
+Install dependencies:
 
 ```bash
 npm install
@@ -62,35 +68,12 @@ Start the development server:
 npm run dev
 ```
 
-Open the local URL displayed in the terminal, usually:
-
-```text
-http://localhost:5173/
-```
-
 ## Available Scripts
-
-Start the development server:
 
 ```bash
 npm run dev
-```
-
-Run ESLint:
-
-```bash
 npm run lint
-```
-
-Create a production build:
-
-```bash
 npm run build
-```
-
-Preview the production build:
-
-```bash
 npm run preview
 ```
 
@@ -111,3 +94,5 @@ This project was created for educational purposes as part of the Code the Dream 
 ## Contact
 
 Created by Alicia Bexley.
+
+GitHub: [abexley](https://github.com/abexley)

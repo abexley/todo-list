@@ -4,6 +4,7 @@ function TextInputWithLabel({
   onChange,
   ref,
   value,
+  maxLength,
 }) {
   return (
     <>
@@ -14,6 +15,7 @@ function TextInputWithLabel({
         ref={ref}
         value={value}
         onChange={onChange}
+        maxLength={maxLength}
       />
     </>
   );

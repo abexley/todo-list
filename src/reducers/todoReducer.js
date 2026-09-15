@@ -11,6 +11,10 @@ export const TODO_ACTIONS = {
   COMPLETE_TODO_SUCCESS: "COMPLETE_TODO_SUCCESS",
   COMPLETE_TODO_ERROR: "COMPLETE_TODO_ERROR",
 
+  DELETE_TODO_START: "DELETE_TODO_START",
+  DELETE_TODO_SUCCESS: "DELETE_TODO_SUCCESS",
+  DELETE_TODO_ERROR: "DELETE_TODO_ERROR",
+
   UPDATE_TODO_START: "UPDATE_TODO_START",
   UPDATE_TODO_SUCCESS: "UPDATE_TODO_SUCCESS",
   UPDATE_TODO_ERROR: "UPDATE_TODO_ERROR",
@@ -56,12 +60,8 @@ export function todoReducer(state, action) {
     case TODO_ACTIONS.FETCH_ERROR:
       return {
         ...state,
-        error: action.payload.isFilterError
-          ? ""
-          : action.payload.message,
-        filterError: action.payload.isFilterError
-          ? action.payload.message
-          : "",
+        error: action.payload.isFilterError ? "" : action.payload.message,
+        filterError: action.payload.isFilterError ? action.payload.message : "",
         isTodoListLoading: false,
       };
 
@@ -96,7 +96,7 @@ export function todoReducer(state, action) {
         ...state,
         todoList: state.todoList.map((todo) =>
           todo.id === action.payload.id
-            ? { ...todo, isCompleted: true }
+            ? { ...todo, isCompleted: !todo.isCompleted }
             : todo,
         ),
         error: "",
@@ -113,10 +113,31 @@ export function todoReducer(state, action) {
       return {
         ...state,
         todoList: state.todoList.map((todo) =>
-          todo.id === action.payload.id
-            ? action.payload.originalTodo
-            : todo,
+          todo.id === action.payload.id ? action.payload.originalTodo : todo,
         ),
+        error: action.payload.message,
+      };
+
+    case TODO_ACTIONS.DELETE_TODO_START:
+      return {
+        ...state,
+        todoList: state.todoList.filter(
+          (todo) => todo.id !== action.payload.id,
+        ),
+        error: "",
+        filterError: "",
+      };
+
+    case TODO_ACTIONS.DELETE_TODO_SUCCESS:
+      return {
+        ...state,
+        error: "",
+      };
+
+    case TODO_ACTIONS.DELETE_TODO_ERROR:
+      return {
+        ...state,
+        todoList: [...state.todoList, action.payload.originalTodo],
         error: action.payload.message,
       };
 

@@ -4,46 +4,26 @@ import { useAuth } from "../contexts/AuthContext";
 function Navigation() {
   const { isAuthenticated } = useAuth();
 
-  const navLinkStyle = ({ isActive }) => ({
-    fontWeight: isActive ? "bold" : "normal",
-    textDecoration: isActive ? "underline" : "none",
-  });
-
   return (
-    <nav>
-      <ul
-        style={{
-          listStyle: "none",
-          display: "flex",
-          gap: "1rem",
-          padding: 0,
-        }}
-      >
+    <nav className="main-nav">
+      <ul>
         <li>
-          <NavLink to="/about" style={navLinkStyle}>
-            About
-          </NavLink>
+          <NavLink to="/about">About</NavLink>
         </li>
 
         {isAuthenticated ? (
           <>
             <li>
-              <NavLink to="/todos" style={navLinkStyle}>
-                Todos
-              </NavLink>
+              <NavLink to="/todos">Todos</NavLink>
             </li>
 
             <li>
-              <NavLink to="/profile" style={navLinkStyle}>
-                Profile
-              </NavLink>
+              <NavLink to="/profile">Profile</NavLink>
             </li>
           </>
         ) : (
           <li>
-            <NavLink to="/login" style={navLinkStyle}>
-              Login
-            </NavLink>
+            <NavLink to="/login">Login</NavLink>
           </li>
         )}
       </ul>

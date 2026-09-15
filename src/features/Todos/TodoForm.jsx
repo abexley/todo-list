@@ -23,6 +23,7 @@ function TodoForm({ onAddTodo }) {
         ref={inputRef}
         value={workingTodoTitle}
         onChange={(event) => setWorkingTodoTitle(event.target.value)}
+        maxLength={100}
       />
 
       <button type="submit" disabled={!isValidTodoTitle(workingTodoTitle)}>

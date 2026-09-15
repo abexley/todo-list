@@ -252,10 +252,10 @@ function TodosPage() {
     <>
       {error && (
         <div>
-          <p>{error}</p>
-          <button
-            onClick={() => dispatch({ type: TODO_ACTIONS.CLEAR_ERROR })}
-          >
+          <p className="error-message" role="alert">
+            {error}
+          </p>
+          <button onClick={() => dispatch({ type: TODO_ACTIONS.CLEAR_ERROR })}>
             Clear Error
           </button>
         </div>
@@ -263,12 +263,12 @@ function TodosPage() {
 
       {filterError && (
         <div>
-          <p>{filterError}</p>
+          <p className="error-message" role="alert">
+            {filterError}
+          </p>
 
           <button
-            onClick={() =>
-              dispatch({ type: TODO_ACTIONS.CLEAR_FILTER_ERROR })
-            }
+            onClick={() => dispatch({ type: TODO_ACTIONS.CLEAR_FILTER_ERROR })}
           >
             Clear Filter Error
           </button>
@@ -281,7 +281,11 @@ function TodosPage() {
         </div>
       )}
 
-      {isTodoListLoading && <p>Loading todos...</p>}
+      {isTodoListLoading && (
+        <p className="loading-message" role="status">
+          Loading todos...
+        </p>
+      )}
 
       <SortBy
         sortBy={sortBy}

@@ -342,3 +342,37 @@ input[type="checkbox"] {
     display: inline-block;
   }
 }
+
+/* FEEDBACK STATES */
+
+.error-message {
+  margin: 0 0 1rem;
+  padding: 0.85rem 1rem;
+  background: #fff4f6;
+  color: #8a3f52;
+  border: 1px solid #edcbd3;
+  border-left: 4px solid #b85c72;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.loading-message {
+  margin: 1rem 0;
+  padding: 0.85rem 1rem;
+  background: #f6f0f8;
+  color: #654672;
+  border: 1px solid #dfd0e5;
+  border-left: 4px solid #8b6599;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.empty-message {
+  margin: 1.25rem 0;
+  padding: 1rem;
+  background: #faf7fc;
+  color: #6b5a72;
+  border: 1px dashed #cdb8d5;
+  border-radius: 10px;
+  text-align: center;
+}
